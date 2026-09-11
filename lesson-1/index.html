@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 1</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    function Passengers() {
+      const [count, setCount] = React.useState(0);
+      const onChangeHandler = (e) => {
+        setCount(Number(e.target.value) || 0);
+      }
+      return (
+        <div>
+          <label>
+            Кількість пасажирів: <br />
+            <input type="number" min="0" onChange={onChangeHandler} />
+          </label>
+          <div>
+            Автобусів треба: {Math.ceil(count / 20)}
+          </div>
+          <div>
+            Води треба: {Math.floor(count * 2)}
+          </div>
+          <div>
+            Хліба з ковбасов треба: {Math.floor(count * 3)}
+          </div>
+        </div>
+      )
+    }
+    function Seasons() {
+      const [data, setData] = React.useState(() => ({ recommendation: "Рукавички", image: "https://images.unsplash.com/photo-1477601263568-180e2c6d046e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }));
+      const onChangeHandler = (e) => {
+        const value = Number(e.target.value);
+        switch (value) {
+          case 1:
+          case 2:
+          case 12:
+            setData(() => ({ recommendation: "Рукавички", image: "https://images.unsplash.com/photo-1477601263568-180e2c6d046e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }))
+            break;
+          case 3:
+          case 4:
+          case 5:
+            setData(() => ({ recommendation: "Чіжми", image: "https://images.unsplash.com/photo-1683806743160-2fc2e159dc66?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }))
+            break;
+          case 6:
+          case 7:
+          case 8:
+            setData(() => ({ recommendation: "Шльопанці", image: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }))
+            break;
+          case 9:
+          case 10:
+          case 11:
+            setData(() => ({ recommendation: "Пальто", image: "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }))
+        }
+      }
+      return (
+        <div>
+          <label>
+            Номер місяця: <br />
+            <input max="12" min="1" defaultValue={1} type="number" onChange={onChangeHandler} />
+          </label>
+          <h3>
+            Бажано одягати {data.recommendation}
+          </h3>
+          <img src={data.image} style={{ aspectRatio: "1170/780", width: "100%" }} alt="Season image" />
+        </div>
+
+      )
+    }
+    function RandomValuePicker() {
+      const [data, setData] = React.useState(() => ({ min: 0, max: 0 }))
+      const [result, setResult] = React.useState(0)
+      const onChangeHandler = (e) => {
+        const { name, value } = e.target;
+        setData((d) => ({
+          ...d,
+          [name]: Number(value)
+        }))
+      }
+
+      const clickHandler = () => {
+        if (data.max >= data.min) {
+          setResult(Math.floor(Math.random() * (data.max - data.min + 1)) + data.min)
+        }
+        else {
+          alert("Мінімальне значення не може бути більшим за максимальне")
+        }
+      }
+
+      return (
+        <div>
+          <label>
+            Від: <br />
+            <input type="number" name="min" onChange={onChangeHandler} />
+          </label> <br />
+          <label>
+            До: <br />
+            <input type="number" name="max" onChange={onChangeHandler} />
+          </label>
+          <br />
+          <button onClick={clickHandler}>Обчислити</button>
+          <h3>
+            Результат: {result}
+          </h3>
+        </div>
+      )
+    }
+    function Bank() {
+      const rates = { usdRate: 44.8, eurRate: 50 }
+      const feeRate = 0.03;
+      const smallAmount = 100;
+      const [data, setData] = React.useState(() => ({ sum: 0, cVal: 0, dVal: 0, balanceColor: "black", lastRate: 0 }))
+
+      const changeHandler = (e) => {
+        const { name, value } = e.target;
+        setData((d) => ({
+          ...d,
+          [name]: value === '' ? 0 : parseFloat(value) || 0
+        }))
+      }
+
+      const credit = () => {
+        if (data.cVal <= 0)
+          return
+        const fee = getFee(data.cVal);
+        const totalToCredit = data.cVal - fee;
+        console.log(fee)
+        setData((d) => ({
+          ...d,
+          sum: d.sum + totalToCredit,
+          balanceColor: "green",
+          lastRate: fee
+        }))
+      }
+
+      const debit = () => {
+        if (data.dVal <= 0)
+          return
+        const fee = getFee(data.dVal);
+        const totalToDebit = data.dVal + fee;
+        if (totalToDebit > data.sum) {
+          alert('Недостатньо коштів на рахунку для зняття з урахуванням комісії!');
+          return;
+        }
+        setData((d) => ({
+          ...d,
+          sum: d.sum - totalToDebit,
+          balanceColor: "red",
+          lastRate: fee
+        }))
+      }
+
+      const getFee = (value) => value * feeRate;
+      return (
+        <div>
+          <h2 style={{ color: data.balanceColor }}>
+            Сума на рахунку: {data.sum.toFixed(2)}
+          </h2>
+          <div>
+            <label>
+              Зарахувати на рахунок:
+              <input min="0" name="cVal" type="text" onChange={changeHandler} />
+              <button onClick={credit}>Зарахувати</button>
+            </label>
+            <br />
+            <label>
+              Зняти з рахунку:
+              <input min="0" name="dVal" type="text" onChange={changeHandler} />
+              <button onClick={debit}>Зняти</button>
+            </label>
+          </div>
+          <h2>
+            Відсотки за обслуговування: {data.lastRate.toFixed(2)}
+          </h2>
+          <hr />
+          <h4 style={{ color: (data.sum / rates.usdRate) < smallAmount ? "red" : "green" }}>
+            Сума у доларах: ${(data.sum / rates.usdRate).toFixed(2)}
+          </h4>
+          <h4 style={{ color: (data.sum / rates.eurRate) < smallAmount ? "red" : "green" }}>
+            Сума у євро: Є{(data.sum / rates.eurRate).toFixed(2)}
+          </h4>
+        </div >
+      )
+    }
+    function Auth() {
+      const [data, setData] = React.useState(() => ({ login: "", pass: "" }))
+      const users = [
+        { id: 1, username: "alex_dev", password: "Password123!" },
+        { id: 2, username: "olena_k", password: "SecurePass#2024" },
+        { id: 3, username: "max_power", password: "Qwerty_889" },
+        { id: 4, username: "iryna_w", password: "SunShine!99" },
+        { id: 5, username: "taras_shev", password: "Secret_Key$42" }
+      ];
+      const onChangeHandler = (e) => {
+        const { name, value } = e.target;
+        setData((d) => ({
+          ...d,
+          [name]: value.trim()
+        }))
+      }
+      const checkUser = () => {
+        const foundUser = users.find(u => u.username === data.login)
+        if (foundUser && foundUser.password === data.pass) {
+          alert("Авторизація успішна")
+        }
+        else {
+          alert("Хибний логін чи пароль")
+        }
+      }
+      return (
+        <div>
+          <label>
+            Login: <input type="text" name="login" onChange={onChangeHandler} />
+          </label>
+          <br />
+          <label>
+            Password: <input type="password" name="pass" onChange={onChangeHandler} />
+          </label>
+          <br />
+          <button onClick={checkUser}>
+            Check
+          </button>
+        </div>
+      )
+    }
+    function App() {
+      return (
+        <React.Fragment>
+          <hr />
+          <h2>Завдання 1</h2>
+          <Passengers />
+          <hr />
+          <h2>Завдання 2</h2>
+          <Seasons />
+          <hr />
+          <h2>Завдання 3</h2>
+          <RandomValuePicker />
+          <hr />
+          <h2>Завдання 4</h2>
+          <Bank />
+          <hr />
+          <h2>Завдання 5</h2>
+          <Auth />
+          <hr />
+        </React.Fragment>
+      )
+    }
+    ReactDOM.render(<App />, document.getElementById('root'))
+  </script>
+</body>
+
+</html>
