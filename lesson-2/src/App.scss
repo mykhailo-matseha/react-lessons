@@ -1,0 +1,25 @@
+@import "./assets/styles/common/colors";
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.task-wrapper {
+  padding: 30px;
+  border: 2px solid $grey-medium;
+  border-radius: 10px;
+  position: relative;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}

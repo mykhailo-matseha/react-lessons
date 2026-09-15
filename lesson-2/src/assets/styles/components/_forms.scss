@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+label {
+  font-weight: 500;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #fff;
+  background-color: $grey-dark;
+  border: 1px solid $grey-medium;
+}
+
+.error {
+  font-size: 14px;
+  color: $error;
+  margin: 5px 0;
+}

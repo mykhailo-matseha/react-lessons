@@ -1,0 +1,48 @@
+.English {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  &__Counter {
+    font-size: 24px;
+    align-self: flex-end;
+  }
+}
+
+.Card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  &__Image {
+    width: 100%;
+    aspect-ratio: 6/4;
+    border-radius: 10px;
+  }
+  &__Title {
+    font-size: 30px;
+  }
+  &.Right {
+    background-color: #10b981;
+  }
+  &.Wrong {
+    background-color: #ef4444;
+    animation: shake 0.4s ease-in-out;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-8px);
+  }
+  40%,
+  80% {
+    transform: translateX(8px);
+  }
+}

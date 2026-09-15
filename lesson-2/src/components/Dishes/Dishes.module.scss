@@ -1,0 +1,28 @@
+.Table {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid #fff;
+  &__Col {
+    &:not(:last-child) {
+      border-right: 1px solid #fff;
+    }
+  }
+  &__Header {
+    text-align: center;
+    padding: 5px;
+  }
+  &__Body {
+  }
+  &__Item {
+    text-align: center;
+    padding: 10px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  &__Button {
+    padding: 5px;
+    font-size: 14px;
+  }
+}
