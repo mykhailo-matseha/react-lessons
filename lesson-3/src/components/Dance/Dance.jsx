@@ -23,6 +23,9 @@ const pupils = [
   { id: 19, name: "Ілля", sex: "boy" },
   { id: 20, name: "Олександра", sex: "girl" },
 ];
+
+// Пари для танців. Поступово вибираємо хлопця, дівчину і додаємо у обрані пари. Пару можна видалити. Поки не вибрано хлопця і дівчину кнопка «Додати» заблокована. Якщо не вистачає хлопців або дівчат вибір також блокується.
+
 function Dance() {
   const [selected, setSelected] = useState({ boy: null, girl: null });
   const [pairs, setPairs] = useState([]);
