@@ -1,0 +1,34 @@
+@import "../../assets/styles/common/colors";
+.Translator {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  &__Block {
+    padding: 20px;
+    background-color: $bg-elevated;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    &:last-child:first-child {
+      grid-column: 1/-1;
+    }
+  }
+  &__Title {
+  }
+  &__Button {
+    font-size: 16px;
+  }
+}
+.active {
+  background-color: $success !important;
+  pointer-events: none;
+}
+.selected {
+  background-color: $selected !important;
+  pointer-events: none;
+}
+.error {
+  background-color: $error !important;
+  pointer-events: none;
+}

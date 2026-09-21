@@ -1,0 +1,28 @@
+@import "../../assets/styles/common/colors";
+.Dance {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  &__Block {
+    padding: 20px;
+    background-color: $bg-elevated;
+    border-radius: 10px;
+    &:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+  &__Title {
+  }
+  &__List {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  &__Button {
+    font-size: 16px;
+  }
+}
+.active {
+  background-color: $success;
+  pointer-events: none;
+}

@@ -1,0 +1,31 @@
+@import "./common";
+@import "./components";
+@import "./fonts";
+
+body {
+  font-family: "inter", sans-serif;
+  background-color: $bg-main;
+  color: $text-primary;
+}
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  li {
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    position: relative;
+    &::before {
+      content: "";
+      width: 6px;
+      aspect-ratio: 1/1;
+      background-color: $primary;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+    }
+  }
+}
