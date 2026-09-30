@@ -1,0 +1,39 @@
+@import "../../assets/styles/common/colors";
+
+.Chat {
+  padding: 15px;
+  border: 1px solid $grey-medium;
+  border-radius: 5px;
+  &__Body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+}
+
+.ChatForm {
+  display: flex;
+  gap: 10px;
+  &__Seng {
+  }
+}
+
+.Message {
+  display: flex;
+  gap: 5px;
+  &__Body {
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: $bg-elevated;
+    border: 1px solid $grey-dark;
+  }
+  &__Actions {
+    display: flex;
+    gap: 10px;
+  }
+  &__Action {
+    padding: 5px;
+  }
+}
