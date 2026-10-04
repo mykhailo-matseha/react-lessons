@@ -1,0 +1,26 @@
+.Dance {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.Dance__Block {
+  padding: 20px;
+  background-color: #1f2233;
+  border-radius: 10px;
+}
+.Dance__Block:last-child {
+  grid-column: 1/-1;
+}
+.Dance__List {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Dance__Button {
+  font-size: 16px;
+}
+
+.active {
+  background-color: #10b981;
+  pointer-events: none;
+}

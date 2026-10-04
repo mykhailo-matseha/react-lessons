@@ -1,0 +1,34 @@
+.Translator {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.Translator__Block {
+  padding: 20px;
+  background-color: #1f2233;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Translator__Block:last-child:first-child {
+  grid-column: 1/-1;
+}
+.Translator__Button {
+  font-size: 16px;
+}
+
+.active {
+  background-color: #10b981 !important;
+  pointer-events: none;
+}
+
+.selected {
+  background-color: #b910b9 !important;
+  pointer-events: none;
+}
+
+.error {
+  background-color: #ef4444 !important;
+  pointer-events: none;
+}

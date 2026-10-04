@@ -1,0 +1,25 @@
+.selected {
+  border: 1px solid green !important;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.block {
+  border: 1px solid #fff;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.button {
+  width: 100%;
+}

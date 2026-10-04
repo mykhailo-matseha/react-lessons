@@ -1,0 +1,34 @@
+.Chat {
+  padding: 15px;
+  border: 1px solid #6b7280;
+  border-radius: 5px;
+}
+.Chat__Body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.ChatForm {
+  display: flex;
+  gap: 10px;
+}
+.Message {
+  display: flex;
+  gap: 5px;
+}
+.Message__Body {
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #1f2233;
+  border: 1px solid #2a2d3d;
+}
+.Message__Actions {
+  display: flex;
+  gap: 10px;
+}
+.Message__Action {
+  padding: 5px;
+}

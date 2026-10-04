@@ -1,0 +1,77 @@
+.Guess__Body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.NumberComp {
+  margin-bottom: 20px;
+}
+.NumberComp__Content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  flex-direction: column;
+}
+.NumberComp__Body {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.NumberComp__Item {
+  height: 50px;
+  width: 50px;
+  background-color: #161824;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  border: 2px solid #fff;
+  border-radius: 8px;
+}
+.NumberComp__Label {
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.Player {
+  padding: 10px;
+  border-radius: 10px;
+}
+.Player__Body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Player_Disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.error {
+  animation: error 0.3s ease-in-out;
+}
+
+@keyframes error {
+  0%, 100% {
+    transform: translateX(0);
+    color: #ef4444;
+  }
+  20% {
+    transform: translateX(-5px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+}
